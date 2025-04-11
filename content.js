@@ -75,7 +75,7 @@ window.detectTechUsed = function () {
     if (window.hasWordPress(html)) {
         detectedTech.push('WordPress');
     }
-    if (window.hasPrestaShop(html)) {
+    if (window.hasPrestaShop(html, scripts)) {
         detectedTech.push('PrestaShop');
     }
     if (window.hasShopify(html, scripts)) {
