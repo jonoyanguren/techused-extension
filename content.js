@@ -117,9 +117,17 @@ window.detectTechUsed = function () {
     }
 
     // Analytics & Marketing
-    if (html.includes('gtag') || scripts.some(script => script.src.includes('gtag'))) {
+    const hasGoogleAnalytics = scripts.some(script =>
+        script.src.includes('google-analytics.com') ||
+        script.src.includes('analytics.js') ||
+        script.src.includes('gtag.js') ||
+        script.src.includes('ga.js')
+    );
+
+    if (hasGoogleAnalytics || html.includes('google-analytics.com') || html.includes('analytics.js')) {
         detectedTech.push('Google Analytics');
     }
+
     if (html.includes('fbq') || scripts.some(script => script.src.includes('fbq'))) {
         detectedTech.push('Facebook Pixel');
     }

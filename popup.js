@@ -44,12 +44,30 @@ function updateDetection() {
             if (techs.length > 0) {
                 resultElement.textContent = `${techs.length} technologies detected`;
                 resultElement.className = 'detected';
-                techList.innerHTML = techs.map(tech => `
-                    <div class="tech-item">
-                        <img src="${tech.logo}" alt="${tech.name} logo" class="tech-logo">
-                        <a href="${tech.url}" target="_blank" class="tech-link">${tech.name}</a>
-                    </div>
-                `).join('');
+
+                // Clear previous content
+                techList.innerHTML = '';
+
+                // Add each technology to the list
+                techs.forEach(tech => {
+                    const techItem = document.createElement('div');
+                    techItem.className = 'tech-item';
+
+                    const logo = document.createElement('img');
+                    logo.src = tech.logo;
+                    logo.alt = `${tech.name} logo`;
+                    logo.className = 'tech-logo';
+
+                    const link = document.createElement('a');
+                    link.href = tech.url;
+                    link.target = '_blank';
+                    link.className = 'tech-link';
+                    link.textContent = tech.name;
+
+                    techItem.appendChild(logo);
+                    techItem.appendChild(link);
+                    techList.appendChild(techItem);
+                });
             } else {
                 resultElement.textContent = 'No technologies detected';
                 resultElement.className = 'detected';

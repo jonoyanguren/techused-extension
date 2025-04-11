@@ -16,7 +16,19 @@
     };
 
     window.hasExpress = function (html, scripts) {
-        return html.includes('express') ||
-            scripts.some(script => script.src.includes('express'));
+        // Check for multiple Express.js indicators
+        const expressIndicators = [
+            'express',
+            'express.js',
+            'expressjs',
+            'express-session',
+            'express-validator',
+            'express-handlebars'
+        ];
+
+        return expressIndicators.some(indicator =>
+            html.includes(indicator) ||
+            scripts.some(script => script.src.includes(indicator))
+        );
     };
 })(); 

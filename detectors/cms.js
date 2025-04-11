@@ -15,7 +15,9 @@
 
     window.hasMagento = function (html, scripts) {
         return html.includes('magento') ||
-            scripts.some(script => script.src.includes('magento'));
+            scripts.some(script => script.src.includes('magento')) ||
+            html.includes('Mage.') ||
+            html.includes('Varien.');
     };
 
     window.hasDrupal = function (html, scripts) {
