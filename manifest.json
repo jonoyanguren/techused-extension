@@ -1,0 +1,38 @@
+{
+    "manifest_version": 3,
+    "name": "TechUsed",
+    "version": "1.0",
+    "description": "Detect technologies used in websites",
+    "permissions": [
+        "activeTab",
+        "scripting"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icons/icon.png",
+            "48": "icons/icon.png",
+            "128": "icons/icon.png"
+        }
+    },
+    "icons": {
+        "16": "icons/icon.png",
+        "48": "icons/icon.png",
+        "128": "icons/icon.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "detectors/frontend.js",
+                "detectors/ui.js",
+                "detectors/backend.js",
+                "detectors/cms.js",
+                "detectors/build.js",
+                "content.js"
+            ]
+        }
+    ]
+}
